@@ -22,11 +22,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            Object.FindFirstObjectByType<GameController>().LoseGame();
+            GameController.Instance.LoseGame();
 
             Destroy(gameObject);
         }
